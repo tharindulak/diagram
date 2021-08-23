@@ -29,6 +29,7 @@ export function SquareC(props: SquareProps) {
                 stroke="black"
                 stroke-width="3"
             />
+            <text x={visualizationData?.bBox?.x} y={visualizationData?.bBox?.y} >{model.name}</text>
             {children}
         </>
     )

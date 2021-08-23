@@ -11,7 +11,7 @@ export function MainContainer() {
 
     const model: Circle = { type: "Circle", name: "circle1", children: [
             {name: "square1", type: "Square"},
-            {name: "square2", type: "Square"}
+            {name: "square2", type: "Square", children: [{name: "triangle1", type: "Triangle"}]}
         ]};
 
     traversShape(model, InitVisitor);

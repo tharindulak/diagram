@@ -17,7 +17,8 @@ export function CircleC(props: CircleProps) {
     model.children?.forEach(child => {
         children = getComponents(child);
     })
-
+    const textY = (visualizationData?.bBox?.y && visualizationData?.bBox?.r) ? visualizationData?.bBox?.y -
+        visualizationData?.bBox?.r : visualizationData?.bBox?.y;
     return (
         <>
             <circle
@@ -28,6 +29,7 @@ export function CircleC(props: CircleProps) {
                 stroke-width="3"
                 fill="#fff"
             />
+            <text x={visualizationData?.bBox?.x} y={textY} >{model.name}</text>
             {children}
         </>
     )

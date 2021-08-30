@@ -11,7 +11,7 @@ class PositioningVisitor implements Visitor {
             circle.visualizationData.bBox.x = 400;
             circle.visualizationData.bBox.y = 400;
 
-            const componentStartX = 350;
+            const componentStartX = 400;
             const componentStartY = 250;
 
             let height = 0;
@@ -20,7 +20,7 @@ class PositioningVisitor implements Visitor {
             (circle.visualizationData as any).lifeline.y = componentStartY;
             circle.children.forEach((child, index) => {
                 if (child.visualizationData?.bBox) {
-                    child.visualizationData.bBox.x = componentStartX;
+                    child.visualizationData.bBox.x = componentStartX - (child.visualizationData.bBox.w / 2);
                     child.visualizationData.bBox.y = componentStartY + height;
                     if (circle.children?.length && (index !== (circle.children?.length - 1))) {
                         height += (child.visualizationData.bBox.h + componentGap);

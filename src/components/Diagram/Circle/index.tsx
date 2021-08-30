@@ -1,6 +1,7 @@
 import {Circle} from "../../../definitions/Definitions";
 import {ReactNode} from "react";
 import {getComponents} from "../../../utils/utils";
+import {ConnectorLine} from "../ConnectorLine";
 
 export const RADIUS = 20;
 
@@ -30,6 +31,7 @@ export function CircleC(props: CircleProps) {
                 fill="#fff"
             />
             <text x={visualizationData?.bBox?.x} y={textY} >{model.name}</text>
+            <ConnectorLine x={(visualizationData as any)?.lifeline?.x} y={(visualizationData as any)?.lifeline?.y} l={(visualizationData as any).lifeline?.h} />
             {children}
         </>
     )

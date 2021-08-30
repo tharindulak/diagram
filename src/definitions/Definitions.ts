@@ -1,5 +1,6 @@
 import {ShapeVisualizationData} from "../visualizationData/ShapeVisualizationData";
 import {SimpleBBox} from "../visualizationData/SimpleBBox";
+import {VisualizationData} from "../visualizationData/VisualizationData";
 
 export interface BBox {
     x: number;
@@ -11,7 +12,7 @@ export interface BBox {
 export interface Shape {
     name: string;
     type: string;
-    visualizationData?: ShapeVisualizationData;
+    visualizationData?: VisualizationData;
 }
 
 export interface Triangle extends Shape {

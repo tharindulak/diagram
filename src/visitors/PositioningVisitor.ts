@@ -1,11 +1,13 @@
 import { Visitor } from "./BaseVisitor";
 import {Circle, Shape, Square} from "../definitions/Definitions";
 import {TRIANGLE_SIZE} from "../components/Diagram/Triangle";
+import {CircleVisualizationData} from "../visualizationData/CircleVisualizationData";
 
 class PositioningVisitor implements Visitor {
 
     beginVisitCircle(circle: Circle, parent?: Shape) {
-        if (circle?.visualizationData?.bBox && circle?.children) {
+        if (circle?.visualizationData?.bBox && circle?.children && (circle?.visualizationData as
+            CircleVisualizationData)) {
             circle.visualizationData.bBox.x = 400;
             circle.visualizationData.bBox.y = 400;
 
@@ -14,15 +16,18 @@ class PositioningVisitor implements Visitor {
 
             let height = 0;
             const componentGap = 50;
+            (circle.visualizationData as any).lifeline.x = componentStartX;
+            (circle.visualizationData as any).lifeline.y = componentStartY;
             circle.children.forEach((child, index) => {
                 if (child.visualizationData?.bBox) {
                     child.visualizationData.bBox.x = componentStartX;
                     child.visualizationData.bBox.y = componentStartY + height;
-                    if (index !== circle.children?.length) {
+                    if (circle.children?.length && (index !== (circle.children?.length - 1))) {
                         height += (child.visualizationData.bBox.h + componentGap);
                     }
                 }
             });
+            (circle.visualizationData as any).lifeline.h = height;
         }
     }
 
